@@ -1,2 +1,6 @@
 export const SET_ITEMS = 'SET_ITEMS';
 export const FETCH_ITEMS = 'FETCH_ITEMS';
+export const SHOW_LOADER = 'SHOW_LOADER';
+export const HIDE_LOADER = 'HIDE_LOADER';
+export const SHOW_ERROR_MESSAGE = 'SHOW_ERROR_MESSAGE';
+export const HIDE_ERROR_MESSAGE = 'HIDE_ERROR_MESSAGE';

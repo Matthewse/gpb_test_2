@@ -1,19 +1,15 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchItems } from '../store/actions';
 
-const Items = () => {
-   const items = useSelector(state => state.items);
-   const dispatch = useDispatch();
-
-   const getItems = () => {
-      dispatch(fetchItems());
-   }
-   console.log(items);
-
+const Items = ({ items }) => {
    return (
-      <div className="lead">
-         <button type="button" className="btn btn-primary" onClick={() => getItems()}>Загрузить список</button>
+      <div className="list-group">
+         {items.map(({ name, id }) => {
+            return (
+               <button type="button" className="list-group-item list-group-item-action" aria-current="true" key={id}>
+                  {name}
+               </button>
+            )
+         })}
       </div>
    )
 }

@@ -1,5 +1,5 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
-import { setItems } from '../store/actions';
+import { setItems, showLoader, hideLoader, showErrorMessage, hideErrorMessage } from '../store/actions';
 import { FETCH_ITEMS } from '../store/types';
 
 const fetchItems = async () => {
@@ -9,10 +9,14 @@ const fetchItems = async () => {
 
 function* sagaWorker() {
    try {
+      yield put(hideErrorMessage())
+      yield put(showLoader())
       const data = yield call(fetchItems);
       yield put(setItems(data));
+      yield put(hideLoader());
    } catch (e) {
-
+      yield put(showErrorMessage())
+      yield put(hideLoader())
    }
 }
 
