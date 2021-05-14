@@ -3,7 +3,6 @@
 }
 
 .card {
-  background-color: rgb(255, 219, 219);
   max-width: 410px;
   padding: 13px 40px;
 }
@@ -16,5 +15,4 @@
 .card-text {
   margin: 0;
   font-weight: 500;
-  color: rgb(149, 21, 21);
 }

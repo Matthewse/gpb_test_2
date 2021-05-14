@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Route, Switch } from "react-router-dom";
 import { fetchItems } from '../store/actions';
 import ErrorMessage from './ErrorMessage';
 import Items from './Items';
 import Loader from './Loader';
+import ItemDetails from './ItemDetails';
 
 const Home = () => {
-   const items = useSelector(state => state.items.items);
-   const loading = useSelector(state => state.loader.loading);
-   const error = useSelector(state => state.loader.error);
+   const { itemsList } = useSelector(state => state.items);
+   const { id } = useSelector(state => state.items.itemDetails);
+   const { loading, error } = useSelector(state => state.loader);
    const dispatch = useDispatch();
 
    useEffect(() => {
@@ -20,14 +22,20 @@ const Home = () => {
    }
 
    if (error) {
-      return <ErrorMessage getItems={getItems}/>;
+      return <ErrorMessage getItems={getItems} />;
    }
 
    return (
       <>
-         {loading
-            ? <Loader />
-            : <Items items={items} />
+         {loading ? <Loader /> :
+            <Switch>
+               <Route exact path="/">
+                  <Items items={itemsList} />
+               </Route>
+               <Route path={`/${id}/details`}>
+                  <ItemDetails />
+               </Route>
+            </Switch>
          }
       </>
    );

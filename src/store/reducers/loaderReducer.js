@@ -1,4 +1,4 @@
-import { SHOW_LOADER, HIDE_LOADER, SHOW_ERROR_MESSAGE, HIDE_ERROR_MESSAGE } from './types'
+import { SHOW_LOADER, HIDE_LOADER, SHOW_ERROR_MESSAGE, HIDE_ERROR_MESSAGE } from '../actions/actionTypes'
 
 const initialState = {
    loading: true,
