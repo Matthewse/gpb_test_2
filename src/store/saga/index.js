@@ -14,26 +14,27 @@ const fetchItemDetails = async (id) => {
 
 function* fetchItemsWorker() {
    try {
-      yield put(hideErrorMessage())
-      yield put(showLoader())
+      yield put(hideErrorMessage());
+      yield put(showLoader());
       const data = yield call(fetchItems);
       yield put(setItems(data));
       yield put(hideLoader());
    } catch (e) {
-      yield put(showErrorMessage())
-      yield put(hideLoader())
+      yield put(showErrorMessage());
+      yield put(hideLoader());
    }
 }
 
 function* fetchItemDetailsWorker(action) {
    try {
-      yield put(hideErrorMessage())
-      yield put(showLoader())
+      yield put(hideErrorMessage());
+      yield put(showLoader());
       const data = yield call(fetchItemDetails, action.payload);
       yield put(setItemDetails(data));
       yield put(hideLoader());
    } catch (e) {
-      yield put(hideLoader())
+      yield put(showErrorMessage());
+      yield put(hideLoader());
    }
 }
 
